@@ -7,6 +7,51 @@ body {
 
 h1 {
   color: #333;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+}
+
+.p1 {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+}
+
+#userInput {
+  display: block;
+  margin: 0 auto;
+  text-align: center;
+  width: 30px;
+  height: 30px;
+  padding: 10px;
+  font-size: 1.2em;
+  border: 1px solid black;
+}
+#userInput::placeholder {
+  color: black;
+}
+
+#countdown {
+  padding: 50px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  color: #e74c3c;
+  font-weight: 500;
+  font-size: larger;
+}
+
+#result {
+  background-color: orange;
+  padding: 50px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
 }
 #result .green {
   color: #2ecc71;
@@ -14,4 +59,15 @@ h1 {
 
 #result .red {
   color: #e74c3c;
+}
+
+#restart {
+  display: block;
+  margin: 30px auto 0 auto;
+  text-align: center;
+  padding: 10px;
+  font-size: 1em;
+  font-weight:bold;
+  background-color: bisque;
+  border-radius: 10px;
 }
