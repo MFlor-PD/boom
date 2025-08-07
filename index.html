@@ -7,15 +7,22 @@
   <title>Bomba Game</title>
 </head>
 <body>
-  <h1>Bomba Game</h1>
-  <p class="p1">Introduce un número del 1 al 3 y pulsa enter o clicka fuera del cuadrado:</p>
-  <input type="number" placeholder="0" id="userInput" min="1" max="3">
-  <div id="countdown"></div>
-  <div id="result">
+  <div class="container">
+    <div class="bomb-icon">💣</div>
+    <h1>Bomba Game</h1>
+    <p class="p1">¡Salva el mundo! Introduce un número del 1 al 3 y pulsa Enter para desactivar la bomba</p>
+    
+    <div class="input-container">
+      <input type="number" placeholder="?" id="userInput" min="1" max="3">
+    </div>
+    
+    <div id="countdown">Cuenta atrás: 5 segundos</div>
+    
+    <div id="result"></div>
+    
+    <button id="restart">Reiniciar Juego</button>
   </div>
-  <button id="restart">Reiniciar Juego</button>
 
-<script src="./js/script.js"></script>
-
+  <script src="./js/script.js"></script>
 </body>
 </html>

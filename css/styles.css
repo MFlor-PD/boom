@@ -1,73 +1,288 @@
-body {
-  font-family: 'Arial', sans-serif;
-  background-color: #f0f0f0;
+@import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&family=Roboto:wght@300;400;700&display=swap');
+
+* {
   margin: 0;
   padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Roboto', sans-serif;
+  background: linear-gradient(135deg, #1e3c72 0%, #2a5298 100%);
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  position: relative;
+  overflow-x: hidden;
+}
+
+body::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><defs><pattern id="grid" width="10" height="10" patternUnits="userSpaceOnUse"><path d="M 10 0 L 0 0 0 10" fill="none" stroke="rgba(255,255,255,0.1)" stroke-width="0.5"/></pattern></defs><rect width="100" height="100" fill="url(%23grid)"/></svg>');
+  pointer-events: none;
+}
+
+.container {
+  background: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(20px);
+  border-radius: 20px;
+  padding: 40px;
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  text-align: center;
+  max-width: 500px;
+  width: 90%;
+  position: relative;
+  z-index: 1;
 }
 
 h1 {
-  color: #333;
-  display: flex;
-  justify-content: center;
-  align-items: center;
+  font-family: 'Orbitron', monospace;
+  font-size: 3rem;
+  font-weight: 900;
+  color: #fff;
   text-align: center;
+  margin-bottom: 20px;
+  text-shadow: 0 0 20px rgba(255, 255, 255, 0.5);
+  animation: glow 2s ease-in-out infinite alternate;
+}
+
+@keyframes glow {
+  from {
+    text-shadow: 0 0 20px rgba(255, 255, 255, 0.5);
+  }
+  to {
+    text-shadow: 0 0 30px rgba(255, 255, 255, 0.8), 0 0 40px rgba(255, 255, 255, 0.3);
+  }
 }
 
 .p1 {
-  display: flex;
-  justify-content: center;
-  align-items: center;
+  font-size: 1.1rem;
+  color: #e0e0e0;
+  margin-bottom: 30px;
+  line-height: 1.6;
   text-align: center;
+}
+
+.input-container {
+  position: relative;
+  margin-bottom: 30px;
 }
 
 #userInput {
-  display: block;
-  margin: 0 auto;
+  width: 80px;
+  height: 80px;
+  font-size: 2.5rem;
+  font-weight: bold;
   text-align: center;
-  width: 30px;
-  height: 30px;
-  padding: 10px;
-  font-size: 1.2em;
-  border: 1px solid black;
+  background: rgba(255, 255, 255, 0.1);
+  border: 2px solid rgba(255, 255, 255, 0.3);
+  border-radius: 15px;
+  color: white;
+  outline: none;
+  transition: all 0.3s ease;
+  font-family: 'Orbitron', monospace;
 }
+
+#userInput:focus {
+  border-color: #00ff88;
+  box-shadow: 0 0 20px rgba(0, 255, 136, 0.5);
+  transform: scale(1.05);
+}
+
 #userInput::placeholder {
-  color: black;
+  color: rgba(255, 255, 255, 0.5);
+  font-size: 1.5rem;
 }
 
 #countdown {
-  padding: 50px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  text-align: center;
-  color: #e74c3c;
-  font-weight: 500;
-  font-size: larger;
+  font-family: 'Orbitron', monospace;
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: #ff6b6b;
+  margin: 30px 0;
+  padding: 20px;
+  background: rgba(255, 107, 107, 0.1);
+  border-radius: 15px;
+  border: 2px solid rgba(255, 107, 107, 0.3);
+  animation: pulse 1s ease-in-out infinite;
+}
+
+@keyframes pulse {
+  0%, 100% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.02);
+  }
 }
 
 #result {
-  background-color: orange;
-  padding: 50px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  text-align: center;
-}
-#result .green {
-  color: #2ecc71;
+  margin: 30px 0;
+  padding: 30px;
+  border-radius: 15px;
+  font-size: 1.2rem;
+  font-weight: 500;
+  transition: all 0.5s ease;
+  opacity: 0;
+  transform: translateY(20px);
 }
 
-#result .red {
-  color: #e74c3c;
+#result.show {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+#result .success {
+  color: #00ff88;
+  font-size: 2rem;
+  font-weight: 700;
+  margin-bottom: 15px;
+  text-shadow: 0 0 10px rgba(0, 255, 136, 0.5);
+}
+
+#result .success1 {
+  color: #00ff88;
+  font-size: 1.1rem;
+}
+
+#result .failed {
+  color: #ff4757;
+  font-size: 2rem;
+  font-weight: 700;
+  margin-bottom: 15px;
+  text-shadow: 0 0 10px rgba(255, 71, 87, 0.5);
+}
+
+#result .failed1 {
+  color: #ff4757;
+  font-size: 1.1rem;
 }
 
 #restart {
-  display: block;
-  margin: 30px auto 0 auto;
-  text-align: center;
-  padding: 10px;
-  font-size: 1em;
-  font-weight:bold;
-  background-color: bisque;
-  border-radius: 10px;
+  background: linear-gradient(45deg, #ff6b6b, #ff8e8e);
+  color: white;
+  border: none;
+  padding: 15px 30px;
+  font-size: 1.1rem;
+  font-weight: 700;
+  border-radius: 25px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: 0 5px 15px rgba(255, 107, 107, 0.3);
+  font-family: 'Roboto', sans-serif;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+#restart:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 25px rgba(255, 107, 107, 0.4);
+  background: linear-gradient(45deg, #ff5252, #ff7676);
+}
+
+#restart:active {
+  transform: translateY(0);
+}
+
+.bomb-icon {
+  font-size: 4rem;
+  margin-bottom: 20px;
+  animation: bounce 2s infinite;
+}
+
+@keyframes bounce {
+  0%, 20%, 50%, 80%, 100% {
+    transform: translateY(0);
+  }
+  40% {
+    transform: translateY(-10px);
+  }
+  60% {
+    transform: translateY(-5px);
+  }
+}
+
+.explosion {
+  animation: explode 0.5s ease-out;
+}
+
+@keyframes explode {
+  0% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.2);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+
+.success-animation {
+  animation: successPulse 0.6s ease-out;
+}
+
+@keyframes successPulse {
+  0% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.1);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+
+/* Responsive design */
+@media (max-width: 768px) {
+  .container {
+    padding: 30px 20px;
+    margin: 20px;
+  }
+  
+  h1 {
+    font-size: 2.5rem;
+  }
+  
+  #userInput {
+    width: 70px;
+    height: 70px;
+    font-size: 2rem;
+  }
+  
+  #countdown {
+    font-size: 1.2rem;
+  }
+  
+  #result .success,
+  #result .failed {
+    font-size: 1.5rem;
+  }
+}
+
+/* Loading animation */
+.loading {
+  display: inline-block;
+  width: 20px;
+  height: 20px;
+  border: 3px solid rgba(255, 255, 255, 0.3);
+  border-radius: 50%;
+  border-top-color: #fff;
+  animation: spin 1s ease-in-out infinite;
+}
+
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
 }
